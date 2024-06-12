@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anagram Finder</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            text-align: center;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Anagram Finder</h1>
+    <form method="POST">
+        <label for="word">Enter a word:</label>
+        <input type="text" id="word" name="word" required>
+        <button type="submit">Find Anagrams</button>
+    </form>
+
+    {% if anagrams %}
+        <h2>Anagrams of "{{ request.form['word'] }}":</h2>
+        <p>Found {{ len_anagrams }} anagrams.</p>
+        <table>
+            <tbody>
+                {% for i in range(0, len_anagrams, 15) %}
+                    <tr>
+                        {% for anagram in anagrams[i:i+15] %}
+                            <td>{{ anagram }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</body>
+</html>
