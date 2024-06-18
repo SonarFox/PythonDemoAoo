@@ -7,7 +7,8 @@ def find_anagrams(word):
     # Generate all possible permutations of the word
     perms = permutations(word)
     foo = "foo"
-
+    bar = "bar"
+    baz = "baz"
 
     # Convert permutations to a set to remove duplicates
     anagrams = set([''.join(p) for p in perms])
